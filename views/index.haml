@@ -1,0 +1,20 @@
+%h1 21CN Ping Checks
+.row
+  .col-md-6#worldMap{style: 'height: 300px;'}
+  .col-md-6#euroMap{style: 'height: 300px;'}
+%table#ping_results.table.table-hover.table-responsive.text-center
+  %thead
+    %th
+    %th.text-center UK
+    %th.text-center EU
+    %th.text-center N.America
+    %th.text-center S.America
+    %th.text-center Asia
+    %th.text-center Oceania
+    %th.text-center Africa
+  %tbody
+
+%table#ping_table
+
+%script{src: 'js/map_controller.js'}
+%script{src: 'js/ping_table_controller.js'}

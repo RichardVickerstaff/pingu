@@ -1,0 +1,27 @@
+!!!
+%html
+  %head
+    %title DivePing
+    %link{href: "css/bootstrap.min.css", rel: "stylesheet"}
+    %link{href: "css/bootstrap-theme.min.css", rel: "stylesheet"}
+    %link{href: "css/jquery-jvectormap-1.2.2.css", rel: "stylesheet"}
+
+    %script{src: "js/jquery-1.11.1.min.js"}
+    %script{src: "js/bootstrap.min.js"}
+    %script{src: "js/jquery-jvectormap-1.2.2.min.js"}
+    %script{src: "js/jquery-jvectormap-world-mill-en.js"}
+    %script{src: "js/jquery-jvectormap-europe-mill-en.js"}
+
+    %meta{'http-equiv' => 'refresh', 'content' => 15}
+
+  %body{style: 'padding-top: 50px;'}
+    .navbar.navbar-inverse.navbar-fixed-top
+      .container
+        .navbar-header
+          %a.navbar-brand{href: "#"} DivePing
+        .collapse.navbar-collapse
+          %ul.nav.navbar-nav
+            %li.active
+              %a{href: "#"} Home
+    #content.container
+      =yield
