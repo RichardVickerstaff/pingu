@@ -1,0 +1,30 @@
+common: &common
+  adapter: postgresql
+  encoding: unicode
+  pool: 20
+  host: localhost
+  port: 5432
+
+development: &development
+  database: pingu_development
+  username: postgres
+  password: postgres
+  <<: *common
+
+test: &test
+  database: pingu_test
+  username: postgres
+  password: postgres
+  <<: *common
+
+production: &production
+  database: pingu
+  username: postgres
+  password: postgres
+  <<: *common
+
+cucumber:
+  <<: *test
+
+edge:
+  <<: *production
