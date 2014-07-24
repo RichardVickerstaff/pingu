@@ -1,4 +1,5 @@
 require 'simplecov'
+require 'rack/test'
 
 SimpleCov.start 'rails' do
   coverage_dir 'log/coverage/spec'

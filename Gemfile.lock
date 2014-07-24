@@ -278,6 +278,7 @@ DEPENDENCIES
   metric_fu
   pg
   pry-byebug
+  rack-test
   rails (= 4.1.4)
   rake_rack
   rspec-rails (~> 3.0.0)

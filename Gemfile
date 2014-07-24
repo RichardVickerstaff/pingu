@@ -12,6 +12,7 @@ group :test, :development do
   gem 'factory_girl_rails'
   gem 'metric_fu'
   gem 'rspec-rails', '~> 3.0.0' # Rake stats misses specs if this is just in :test
+  gem "rack-test"
 end
 
 group :development do
