@@ -8,7 +8,7 @@ FactoryGirl.define do
 
     trait :with_one_site do
       after :create do |group, _|
-        host_group.sites << create(:bbc)
+        group.sites << create(:bbc)
       end
     end
 	end
