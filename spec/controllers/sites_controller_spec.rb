@@ -17,7 +17,8 @@ describe SitesController do
 
     it 'returns a sample of sites for each group' do
       get "/sites"
-      expect(json).to eq({UK: [bbc, govuk], USA: [google]})
+      expect(json[:UK]).to match_array [bbc, govuk]
+      expect(json[:USA]).to match_array [google]
     end
   end
 end
