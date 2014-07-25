@@ -2,9 +2,8 @@ FactoryGirl.define do
 	factory :site_group, class: SiteGroup do
     name 'a group'
 
-    trait :uk  do
-      name 'a group'
-    end
+    trait(:uk) { name 'UK' }
+    trait(:us) { name 'USA'}
 
     trait :with_one_site do
       after :create do |group, _|

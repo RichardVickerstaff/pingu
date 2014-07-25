@@ -81,6 +81,8 @@ GEM
     factory_girl_rails (4.4.1)
       factory_girl (~> 4.4.0)
       railties (>= 3.0.0)
+    faker (1.4.2)
+      i18n (~> 0.5)
     fast_stack (0.1.0)
       rake
       rake-compiler
@@ -270,6 +272,7 @@ DEPENDENCIES
   cucumber-rails
   database_cleaner
   factory_girl_rails
+  faker
   flamegraph
   foreigner
   immigrant
@@ -278,7 +281,6 @@ DEPENDENCIES
   metric_fu
   pg
   pry-byebug
-  rack-test
   rails (= 4.1.4)
   rake_rack
   rspec-rails (~> 3.0.0)

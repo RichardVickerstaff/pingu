@@ -2,17 +2,18 @@ source 'https://rubygems.org'
 
 gem 'rails', '4.1.4'
 gem 'pg'
+
 gem 'foreigner'
 gem 'jbuilder'
-gem 'values'
 gem 'rake_rack'
+gem 'values'
 
 group :test, :development do
-  gem 'pry-byebug'
   gem 'factory_girl_rails'
+  gem 'faker'
   gem 'metric_fu'
+  gem 'pry-byebug'
   gem 'rspec-rails', '~> 3.0.0' # Rake stats misses specs if this is just in :test
-  gem "rack-test"
 end
 
 group :development do
@@ -25,6 +26,6 @@ group :test do
   gem 'capybara'
   gem 'cucumber-rails', require: false
   gem 'database_cleaner'
-  gem 'simplecov'
   gem 'shoulda-matchers'
+  gem 'simplecov'
 end
