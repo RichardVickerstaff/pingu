@@ -23,7 +23,7 @@ Apitome.setup do |config|
   # We're using highlight.js (https://github.com/isagalaev/highlight.js) for code highlighting, and it comes with some
   # great themes. You can check http://softwaremaniacs.org/media/soft/highlight/test.html for themes, and enter the
   # theme as lowercase/underscore.
-  config.code_theme = 'default'
+  config.code_theme = 'tomorrow_night_bright'
 
   # This allows you to override the css manually. You typically want to require `apitome/application` within the
   # override, but if you want to override it entirely you can do so.
