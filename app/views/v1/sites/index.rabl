@@ -1,2 +1,4 @@
 collection @site_groups
-attributes name: :group_name, sample_sites: :sample_urls
+
+attribute name: :group_name
+attribute sample_sites: :sample_urls
