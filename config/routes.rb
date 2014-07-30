@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+
+  root to: redirect(Apitome.configuration.mount_at)
+
   scope module: :v1 do
     resources :sites, only: [:index], defaults: {format: 'json'}
   end

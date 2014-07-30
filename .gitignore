@@ -1,6 +1,7 @@
 *.sw?
 /.bundle
 /doc/*
+!/doc/api.md
 /log/*
 /tmp
 coverage/
