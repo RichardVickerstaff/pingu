@@ -1,15 +1,19 @@
 require 'rails_helper'
 
-describe 'Sites API' do
+resource "Sites" do
+  get '/sites' do
+    response_field :group_name, 'The set of sites which these pages belong to'
+    response_field :sample_urls, 'An array of selected urls'
 
-  describe 'get'  do
-    before do
-      FactoryGirl.create :site_group, :uk, :with_one_site
-    end
+    let!(:group){ FactoryGirl.create :site_group, :with_one_site }
 
-    it 'returns a hash of sites to ping for each category' do
-      get "/sites"
-      expect(json).to eq({UK: ['www.bbc.co.uk']})
+    example 'Sample of sites to poll' do
+      expected = [{ group_name: group.name, sample_urls: group.sites.map(&:url) }]
+
+      do_request
+
+      expect(status).to eq 200
+      expect(response_body).to eq JSON.generate(expected)
     end
   end
 end

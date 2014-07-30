@@ -7,12 +7,15 @@ gem 'foreigner'
 gem 'jbuilder'
 gem 'rake_rack'
 gem 'values'
+gem 'rabl'
 
 group :test, :development do
   gem 'factory_girl_rails'
   gem 'faker'
   gem 'metric_fu'
   gem 'pry-byebug'
+  gem 'rspec_api_documentation'
+  gem 'rspec-deep-ignore-order-matcher'
   gem 'rspec-rails', '~> 3.0.0' # Rake stats misses specs if this is just in :test
 end
 

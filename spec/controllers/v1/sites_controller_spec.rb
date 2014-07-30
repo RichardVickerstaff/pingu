@@ -1,10 +1,12 @@
 require 'rails_helper'
 
 describe V1::SitesController do
+
   describe '#index' do
     let(:bbc){'http://www.bbc.co.uk'}
     let(:govuk){'http://www.gov.uk'}
     let(:google){'http://www.google.com'}
+    let(:get_sites) { get "/sites", {}, {'version' => 1} }
 
     context 'there are groups' do
       before do
@@ -17,16 +19,21 @@ describe V1::SitesController do
       end
 
       it 'returns a sample of sites for each group' do
-        get "/sites", {}, {'version' => 1}
-        expect(json[:UK]).to match_array [bbc, govuk]
-        expect(json[:USA]).to match_array [google]
+        expected = [
+          {'group_name' =>  'UK', 'sample_urls' => [bbc, govuk]},
+          {'group_name' => 'USA', 'sample_urls' =>    [google]}
+        ]
+
+        get_sites
+
+        expect(json).to be_deep_equal expected
       end
     end
 
     context 'there are no groups' do
-      it 'returns an empty hash' do
-        get "/sites", {}, {'version' => 1}
-        expect(json).to eq({})
+      it 'returns an empty array' do
+        get_sites
+        expect(json).to eq([])
       end
     end
   end

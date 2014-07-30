@@ -5,7 +5,7 @@ module Requests
     end
 
     def json
-      @json ||= JSON.parse(last_response.body, {:symbolize_names => true})
+      @json ||= JSON.parse(last_response.body)
     end
   end
 end
