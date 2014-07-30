@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 gem 'rails', '4.1.4'
 gem 'pg'
 
+gem "apitome"
 gem 'foreigner'
 gem 'jbuilder'
 gem 'rake_rack'
