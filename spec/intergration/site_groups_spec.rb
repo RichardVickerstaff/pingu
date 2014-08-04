@@ -2,18 +2,32 @@ require 'rails_helper'
 
 resource "Site Group" do
 
-  pending get '/site_groups/report' do
+  get '/site_groups/report' do
+
+    let(:probes)      { FactoryGirl.create_list :probe, 2 }
+    let(:runs)        { FactoryGirl.create_list :run, 2   }
+    let(:normal_ping) { FactoryGirl.create :ping, response_ms: 50 }
+    let(:failed_ping) { FactoryGirl.create :ping, :failed }
+    let(:long_ping)   { FactoryGirl.create :ping, response_ms: 200}
+
+    before do
+      probes.first.runs << runs.first
+      probes.last.runs  << runs.last
+      runs.first << long_ping << normal_ping
+      runs.last  << failed_ping << normal_ping
+    end
+
     example 'Getting ping times' do
       expected =[
         {
           group_name: 'Location A',
-          average_response_time: 150,
-          failed_pings: 1
+          average_response_time: 200,
+          failed_pings: 0
         },
         {
           group_name: 'Location B',
-          average_response_time: 250,
-          failed_pings: 4
+          average_response_time: 50,
+          failed_pings: 1
         }
       ]
 
@@ -25,6 +39,7 @@ resource "Site Group" do
   end
 
   get '/site_groups/samples' do
+    #TODO Do we care about these?
     response_field :group_name, 'The set of sites which these pages belong to'
     response_field :sample_urls, 'An array of selected urls'
 
