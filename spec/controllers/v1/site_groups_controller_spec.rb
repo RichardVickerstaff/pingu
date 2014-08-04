@@ -1,12 +1,12 @@
 require 'rails_helper'
 
-describe V1::SitesController do
+describe V1::SiteGroupsController do
 
-  describe '#index' do
+  describe '#samples' do
     let(:bbc){'http://www.bbc.co.uk'}
     let(:govuk){'http://www.gov.uk'}
     let(:google){'http://www.google.com'}
-    let(:get_sites) { get "/sites", {}, {'version' => 1} }
+    let(:get_sites) { get "/site_groups/samples", {}, {'version' => 1} }
 
     context 'there are groups' do
       before do

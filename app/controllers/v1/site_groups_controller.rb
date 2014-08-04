@@ -1,8 +1,8 @@
 module V1
-  class SitesController < ApplicationController
+  class SiteGroupsController < ApplicationController
     respond_to :json
 
-    def index
+    def samples
       @site_groups = SiteGroup.all
     end
   end

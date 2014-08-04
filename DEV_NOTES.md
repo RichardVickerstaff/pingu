@@ -13,7 +13,6 @@ post /site_group            => Create SiteGroup
 post /site_group/:name/site => Site.create
 get  /site_group/report     => SiteGroups[] : {group_name: 'bar', average_response_ms: 23}
 get  /site_group/sample     => SiteGroups[] : {group_name: 'bar', sample_urls: ['http://foo.com']
-
 ```
 
 
