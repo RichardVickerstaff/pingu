@@ -1,6 +1,7 @@
 FactoryGirl.define do
 	factory :run, class: Run do
-    time {Time.zone.now}
+    created_at {Time.zone.now}
+    updated_at {Time.zone.now}
 	end
 end
 

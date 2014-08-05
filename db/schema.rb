@@ -11,10 +11,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140725105543) do
+ActiveRecord::Schema.define(version: 20140805094124) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "pings", force: true do |t|
+    t.integer "response_ms"
+    t.integer "run_id"
+    t.integer "site_id"
+  end
+
+  create_table "probes", force: true do |t|
+    t.string "name"
+    t.string "location"
+    t.string "ip"
+  end
+
+  create_table "runs", force: true do |t|
+    t.integer  "probe_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "site_groups", force: true do |t|
     t.string "name"
