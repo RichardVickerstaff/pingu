@@ -16,7 +16,9 @@ get  /site_group/sample     => SiteGroups[] : {group_name: 'bar', sample_urls: [
 ```
 
 
-[ Posts ] -< [ Runs ] -< [ Pings ] >- [ Sites ] >- [ SiteGroups ]
+```
+[ Probe ] -< [ Runs ] -< [ Pings ] >- [ Sites ] >- [ SiteGroups ]
   -IP          -Time       -ms          -url         -Name
   -Name
   -Loc
+```
