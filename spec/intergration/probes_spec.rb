@@ -22,9 +22,11 @@ resource 'Probes' do
           }
         ]
       }
+
       do_request post_json
+
       expect(status).to eq 201
     end
-
   end
+
 end

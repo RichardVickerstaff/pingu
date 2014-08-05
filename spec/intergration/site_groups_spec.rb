@@ -11,22 +11,23 @@ resource "Site Group" do
     let(:long_ping)   { FactoryGirl.create :ping, response_ms: 200}
 
     before do
+      # TODO: create using run.create(attributes_for :ping)
       probes.first.runs << runs.first
       probes.last.runs  << runs.last
-      runs.first << long_ping << normal_ping
-      runs.last  << failed_ping << normal_ping
+      runs.first.pings << long_ping << normal_ping
+      runs.last.pings  << failed_ping << normal_ping
     end
 
     example 'Getting ping times' do
       expected =[
         {
           group_name: 'Location A',
-          average_response_time: 200,
+          average_response_ms: 200,
           failed_pings: 0
         },
         {
           group_name: 'Location B',
-          average_response_time: 50,
+          average_response_ms: 50,
           failed_pings: 1
         }
       ]

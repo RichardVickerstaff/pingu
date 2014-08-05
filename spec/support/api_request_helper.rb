@@ -5,7 +5,7 @@ module Requests
     end
 
     def json
-      @json ||= JSON.parse(last_response.body)
+      @json ||= JSON.parse(response.body)
     end
   end
 end

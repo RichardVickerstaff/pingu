@@ -5,5 +5,9 @@ module V1
     def samples
       @site_groups = SiteGroup.all
     end
+
+    def report
+      @report = AveragePingReport.generate
+    end
   end
 end

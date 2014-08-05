@@ -1,40 +1,48 @@
 require 'rails_helper'
 
-describe V1::SiteGroupsController do
+describe V1::SiteGroupsController, type: :controller do
+  let(:us) { FactoryGirl.build(:site_group, :us) }
+  let(:uk) { FactoryGirl.build(:site_group, :uk) }
 
-  describe '#samples' do
-    let(:bbc){'http://www.bbc.co.uk'}
-    let(:govuk){'http://www.gov.uk'}
-    let(:google){'http://www.google.com'}
-    let(:get_sites) { get "/site_groups/samples", {}, {'version' => 1} }
+  # TODO: Make this a SPEC instead of INTEGRATION
+  describe 'GET samples' do
+    let(:sites) { 3.times.map{|_| Faker::Internet.url} }
 
     context 'there are groups' do
       before do
-        uk = FactoryGirl.create(:site_group, :uk)
-        uk.sites << FactoryGirl.create(:site, url: bbc)
-        uk.sites << FactoryGirl.create(:site, url: govuk)
-
-        us = FactoryGirl.create(:site_group, :us)
-        us.sites << FactoryGirl.create(:site, url: google)
+        allow(uk).to receive(:sample_sites).and_return sites[1..2]
+        allow(us).to receive(:sample_sites).and_return sites[3]
+        allow(SiteGroup).to receive(:all).and_return [uk, us]
       end
 
       it 'returns a sample of sites for each group' do
         expected = [
-          {'group_name' =>  'UK', 'sample_urls' => [bbc, govuk]},
-          {'group_name' => 'USA', 'sample_urls' =>    [google]}
+          {'group_name' =>  'UK', 'sample_urls' => sites[1..2]},
+          {'group_name' => 'USA', 'sample_urls' => sites[3]}
         ]
 
-        get_sites
-
-        expect(json).to be_deep_equal expected
+        get :samples
+        expect(json).to eq expected
       end
     end
 
     context 'there are no groups' do
       it 'returns an empty array' do
-        get_sites
+        get :samples
         expect(json).to eq([])
       end
     end
   end
+
+  describe 'GET report' do
+    let(:report) { double :report }
+
+    before { allow(AveragePingReport).to receive(:generate).and_return report}
+
+    it 'assigns @report' do
+      get :report
+      expect(assigns[:report]).to eq report
+    end
+  end
+
 end

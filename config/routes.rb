@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     resources :site_groups do
       collection do
         get :samples, defaults: {format: 'json'}
+        get :report, defaults: {format: 'json'}
       end
     end
   end
