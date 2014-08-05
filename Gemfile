@@ -17,6 +17,7 @@ group :test, :development do
   gem 'pry-byebug'
   gem 'rspec_api_documentation'
   gem 'rspec-rails', '~> 3.0.0' # Rake stats misses specs if this is just in :test
+  gem 'rubocop'
 end
 
 group :development do
