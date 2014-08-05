@@ -4,4 +4,8 @@ class Ping < ActiveRecord::Base
   belongs_to :run
 
   delegate :site_group, to: :site, prefix: false
+
+  def responded?
+    (response_ms == -1) ? false : true
+  end
 end

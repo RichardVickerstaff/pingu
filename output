@@ -1,0 +1,1 @@
+clear;bundle exec rspec spec/services/average_ping_report_spec.rb --color

@@ -6,6 +6,6 @@ class Probe < ActiveRecord::Base
   scope :alive, -> { joins(:runs).merge Run.recent }
 
   def latest_pings
-    runs.last.pings
+    runs.last.pings.to_a
   end
 end
