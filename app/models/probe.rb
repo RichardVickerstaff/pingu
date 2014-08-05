@@ -4,4 +4,8 @@ class Probe < ActiveRecord::Base
   validates :ip,       presence: true
   has_many  :runs
   scope :alive, -> { joins(:runs).merge Run.recent }
+
+  def latest_pings
+    runs.last.pings
+  end
 end

@@ -19,4 +19,21 @@ describe Probe do
       expect(described_class.alive).to eq [alive_probe]
     end
   end
+
+  describe '.latest_pings' do
+    let(:probe) { create :probe }
+
+    before do
+      run_1 = probe.runs.create  attributes_for(:run)
+      run_1.pings.create(attributes_for(:ping))
+
+      run_2 = probe.runs.create  attributes_for(:run)
+      @ping_2 = run_2.pings.create attributes_for(:ping)
+    end
+
+    it 'returns the pings for the last run' do
+      expect(probe.latest_pings).to eq [@ping_2]
+    end
+  end
+
 end
