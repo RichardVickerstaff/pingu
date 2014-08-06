@@ -12,6 +12,4 @@ class AveragePingReport
 
     average_pings
   end
-
-
 end

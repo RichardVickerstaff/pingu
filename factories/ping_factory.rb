@@ -5,7 +5,7 @@ FactoryGirl.define do
     end
 
     trait :failed do
-      response_ms -1
+      response_ms(-1)
     end
 
   end

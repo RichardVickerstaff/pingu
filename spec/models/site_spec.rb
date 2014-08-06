@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 describe Site do
   it { is_expected.to validate_presence_of :url }
