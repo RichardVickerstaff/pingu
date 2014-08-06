@@ -10,7 +10,7 @@ task :default => %i[
   clean
   db:migrate
   db:test:prepare
-  rake_rack:rspec
+  docs:generate
   rake_rack:coverage:check_specs
   rake_rack:ok
 ]
