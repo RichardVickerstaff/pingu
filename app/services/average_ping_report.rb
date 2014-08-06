@@ -1,5 +1,5 @@
 class AveragePingReport
-  AveragePing = Struct.new(:group_name, :average_ping)
+  AveragePing = Struct.new(:group_name, :average_response_ms)
 
   def self.generate
     recent_pings = Probe.alive.to_a.map(&:latest_pings)
