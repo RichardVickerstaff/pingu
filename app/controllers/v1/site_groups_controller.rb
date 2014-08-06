@@ -3,7 +3,7 @@ module V1
     respond_to :json
 
     def samples
-      @site_groups = SiteGroup.all
+      @site_groups = SiteGroupSample.generate
     end
 
     def report

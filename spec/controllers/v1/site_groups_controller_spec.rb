@@ -7,7 +7,7 @@ describe V1::SiteGroupsController, type: :controller do
   describe "GET samples" do
     let(:site_groups) { double :site_groups }
 
-    before { allow(SiteGroup).to receive(:all).and_return site_groups }
+    before { allow(SiteGroupSample).to receive(:generate).and_return site_groups }
 
     it "assigns @report" do
       get :samples
