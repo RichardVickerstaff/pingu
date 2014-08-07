@@ -1,3 +1,3 @@
-collection @site_groups
+object :false
 
-attributes :group_name, :sample_urls
+node(:sites) { @site_groups }

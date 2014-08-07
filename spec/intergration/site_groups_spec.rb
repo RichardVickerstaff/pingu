@@ -3,7 +3,6 @@ require "rails_helper"
 resource "Site Group" do
 
   get "/site_groups/report" do
-
     let(:probes)         { create_list :probe, 2 }
     let(:normal_ping_2)  { create :ping, response_ms: 50 }
     let(:normal_ping_1)  { create :ping, response_ms: 50 }
@@ -57,7 +56,7 @@ resource "Site Group" do
     let!(:group) { FactoryGirl.create :site_group, :with_one_site }
 
     example "Sample of sites to poll" do
-      expected = [{ group_name: group.name, sample_urls: group.sites.map(&:url) }]
+      expected = {sites: group.sites.map(&:url)}
 
       do_request
 
