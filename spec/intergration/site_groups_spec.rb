@@ -48,21 +48,4 @@ resource "Site Group" do
     end
   end
 
-  get "/site_groups/samples" do
-    # TODO: Do we care about these?
-    response_field :group_name, "The set of sites which these pages belong to"
-    response_field :sample_urls, "An array of selected urls"
-
-    let!(:group) { FactoryGirl.create :site_group, :with_one_site }
-
-    example "Sample of sites to poll" do
-      expected = {sites: group.sites.map(&:url)}
-
-      do_request
-
-      expect(status).to eq 200
-      expect(response_body).to eq JSON.generate(expected)
-    end
-
-  end
 end

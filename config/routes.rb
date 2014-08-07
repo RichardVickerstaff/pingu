@@ -5,7 +5,6 @@ Rails.application.routes.draw do
   scope module: :v1 do
     resources :site_groups do
       collection do
-        get :samples, defaults: {format: 'json'}
         get :report, defaults: {format: 'json'}
       end
     end
@@ -13,6 +12,10 @@ Rails.application.routes.draw do
     #TODO: this probably shouldn't be a resource
     resources :probes do
       resources :runs, defaults: {format: 'json'}
+    end
+
+    namespace :sites do
+      get :sample, defaults: {format: 'json'}
     end
   end
 end
