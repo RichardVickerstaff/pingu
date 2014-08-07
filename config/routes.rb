@@ -9,6 +9,11 @@ Rails.application.routes.draw do
         get :report, defaults: {format: 'json'}
       end
     end
+
+    #TODO: this probably shouldn't be a resource
+    resources :probes do
+      resources :runs, defaults: {format: 'json'}
+    end
   end
 end
 
