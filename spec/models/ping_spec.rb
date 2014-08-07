@@ -5,6 +5,7 @@ describe Ping do
   it { is_expected.to belong_to :site }
   it { is_expected.to belong_to :run  }
   it { is_expected.to delegate_method(:site_group).as(:site_group).to(:site) }
+  it { is_expected.to delegate_method(:url).as(:url).to(:site) }
 
   describe "#responded?" do
     let(:responded)  { create :ping }
