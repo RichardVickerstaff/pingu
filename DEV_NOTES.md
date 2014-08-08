@@ -5,7 +5,7 @@ API Design Notes
 ✓ get  /                      => routes index
 
 ✓ get  /probes                => Probes[] : {probe_name: 'foo', pings[]}
-put  /probes/:name          => Find/Create/Update probe
+✓ put  /probes/:name          => Find/Create/Update probe
 ✓ post /probes/:name/run      => Create new Run + pings
 
 get  /site_group            => SiteGroups[] : {group_name: 'bar', sites[]}

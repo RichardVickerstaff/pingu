@@ -19,6 +19,25 @@ resource "Probes" do
     end
   end
 
+  put "/probes/ProbeName" do
+
+    parameter :location, "The location of the probe",   required: true, scope: :probe
+    parameter :ip,       "The IP address of the probe", required: true, scope: :probe
+
+    let(:ip) { Faker::Internet.ip_v4_address }
+    let(:location) { Faker::Address.city }
+
+    let(:raw_post) { params.to_json }
+
+    example_request "PUT a Probe (create or update)" do
+      expect(status).to eq 201
+
+      expect(Probe.first.name).to eq "ProbeName"
+      expect(Probe.first.ip).to eq ip
+      expect(Probe.first.location).to eq location
+    end
+  end
+
   post "/probes/Probe1/runs" do
     let(:pings) {[40, 200]}
 
@@ -55,5 +74,4 @@ resource "Probes" do
       expect(Ping.all.map(&:response_ms)).to match_array pings
     end
   end
-
 end
