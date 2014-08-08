@@ -2,12 +2,10 @@ require "rails_helper"
 
 describe RunBuilder do
   let(:probe) { create :probe }
-  let(:run) {
-    [{"group_name"=>"Location A", "pings"=>
-       [{"site_name"=>"site 1", "response_ms"=>"-1"}]},
-    {"group_name"=>"Location B", "pings"=>
-     [{"site_name"=>"site 2", "response_ms"=>"40"}]}]
-  }
+  let(:run) { [
+    {"site_name"=>"site 1", "response_ms"=>"-1"},
+    {"site_name"=>"site 2", "response_ms"=>"40"}
+  ] }
 
   subject { RunBuilder.new probe, run }
 

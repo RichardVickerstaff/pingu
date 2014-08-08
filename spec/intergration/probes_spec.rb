@@ -39,23 +39,14 @@ resource "Probes" do
   end
 
   post "/probes/ProbeName/runs" do
-    let(:pings) {[40, 200]}
+    let(:ping_times) {[40, 200]}
 
-    parameter :site_groups, "The site groups that have been pinged", required: true
+    parameter :pings, "The sites that have been pinged and the response time", required: true
 
-    let(:site_groups) {
-       [
-        {
-          group_name: "Location A",
-          pings:      [
-            { site_name: "site 1", response_ms: 200 },
-          ]
-        }, {
-          group_name: "Location B",
-          pings:       [
-            { site_name: "site 2", response_ms:  40 }
-          ]
-        }
+    let(:pings) {
+      [
+        { site_name: "site 1", response_ms: 200 },
+        { site_name: "site 2", response_ms:  40 }
       ]
     }
 
@@ -71,7 +62,7 @@ resource "Probes" do
     example_request "Posting ping times" do
       expect(status).to eq 201
 
-      expect(Ping.all.map(&:response_ms)).to match_array pings
+      expect(Ping.all.map(&:response_ms)).to match_array ping_times
     end
   end
 end

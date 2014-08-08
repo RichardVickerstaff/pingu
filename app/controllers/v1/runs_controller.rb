@@ -6,7 +6,7 @@ module V1
       probe = Probe.find_by(name: params[:probe_id])
 
       if probe
-        RunBuilder.new(probe, params[:site_groups]).build
+        RunBuilder.new(probe, params[:pings]).build
         render status: 201, json: ""
       else
         render status: 404, json: ""

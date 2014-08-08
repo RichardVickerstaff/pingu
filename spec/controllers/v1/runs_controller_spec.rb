@@ -7,10 +7,8 @@ describe V1::RunsController, type: :controller do
     context 'the probe reporting has been created' do
       let(:probe) { create :probe }
       let(:post_data) {
-        [{"group_name"=>"Location A", "pings"=>
-           [{"site_name"=>"site 3", "response_ms"=>"-1"}]},
-        {"group_name"=>"Location B", "ping"=>
-         [{"site_name"=>"site 4", "response_ms"=>"40"}]}]
+        [{"site_name"=>"site 3", "response_ms"=>"-1"},
+         {"site_name"=>"site 4", "response_ms"=>"40"}]
       }
 
       before do
@@ -20,11 +18,11 @@ describe V1::RunsController, type: :controller do
 
       it "calls the run generator with the run data" do
         expect(run_builder).to receive(:build)
-        post :create, probe_id: probe.name, site_groups: post_data
+        post :create, probe_id: probe.name, pings: post_data
       end
 
       it "returns a 201 status" do
-        post :create, probe_id: probe.name, site_groups: post_data
+        post :create, probe_id: probe.name, pings: post_data
         expect(response.status).to eq 201
       end
     end
