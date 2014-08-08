@@ -38,7 +38,7 @@ resource "Probes" do
     end
   end
 
-  post "/probes/Probe1/runs" do
+  post "/probes/ProbeName/runs" do
     let(:pings) {[40, 200]}
 
     parameter :site_groups, "The site groups that have been pinged", required: true
@@ -63,7 +63,7 @@ resource "Probes" do
     let!(:site_2) { create :site, url: "site 2" }
 
     before do
-      create :probe, name: "Probe1"
+      create :probe, name: "ProbeName"
     end
 
     let(:raw_post) { params.to_json }
