@@ -29,7 +29,7 @@ resource "Probes" do
 
     let(:raw_post) { params.to_json }
 
-    example_request "PUT a Probe (create or update)" do
+    example_request "Create or update a probe" do
       expect(status).to eq 201
 
       expect(Probe.first.name).to eq "ProbeName"

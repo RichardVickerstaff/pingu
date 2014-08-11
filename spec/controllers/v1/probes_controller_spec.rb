@@ -1,6 +1,7 @@
 require "rails_helper"
 
 describe V1::ProbesController, type: :controller do
+
   describe "GET index" do
     let(:probe_report) { double :probe_report }
 
@@ -36,7 +37,6 @@ describe V1::ProbesController, type: :controller do
       end
 
       it "Updates the probe" do
-
         put :update, id: name, probe: {location: location, ip: ip}
 
         expect(Probe.all.count).to eq 1
