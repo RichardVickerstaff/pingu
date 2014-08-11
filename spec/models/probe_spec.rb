@@ -6,7 +6,7 @@ describe Probe do
   it { is_expected.to validate_presence_of :location }
   it { is_expected.to have_many :runs }
 
-  describe ".alive_probes" do
+  describe ".alive" do
     let(:alive_probe) { create :probe }
     let(:dead_probe)  { create :probe }
 

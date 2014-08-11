@@ -22,8 +22,8 @@ end
 
 __END__
 
-By convention we want the new version to de the default API
-The fowliing shows how this can be done:
+By convention we want the new version to be the default API
+The following shows how this can be done:
 
 scope module: :v1, constraints: ApiConstraint.new(version: 1) do
   resources :sites, only: [:index], defaults: {format: 'json'}
