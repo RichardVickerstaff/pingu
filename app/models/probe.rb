@@ -1,5 +1,5 @@
 class Probe < ActiveRecord::Base
-  validates :name,     presence: true
+  validates :name,     presence: true,  uniqueness: { case_sensitive: false }
   validates :location, presence: true
   validates :ip,       presence: true
   has_many :runs
