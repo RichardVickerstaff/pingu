@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 module V1
   class SitesController < ApplicationController
     respond_to :json
