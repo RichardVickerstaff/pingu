@@ -3,7 +3,7 @@ module V1
     respond_to :json
 
     def create
-      probe = Probe.find_by(name: params[:probe_id])
+      probe = Probe.find_by(uid: params[:probe_id])
 
       if probe
         RunBuilder.new(probe, params[:pings]).build

@@ -14,8 +14,8 @@ describe ProbeReport do
 
     it "returns the average ping from the last 5 minutes per site group" do
       expected = [
-        ProbeReport::LatestPingReport.new(probe_1.name, probe_1.location, probe_1.ip, [{response_ms: ping_1.response_ms, url: site_1.url}]),
-        ProbeReport::LatestPingReport.new(probe_2.name, probe_2.location, probe_2.ip, [{response_ms: ping_2.response_ms, url: site_2.url}]),
+        ProbeReport::LatestPingReport.new(probe_1.uid, probe_1.location, probe_1.ip, [{response_ms: ping_1.response_ms, url: site_1.url}]),
+        ProbeReport::LatestPingReport.new(probe_2.uid, probe_2.location, probe_2.ip, [{response_ms: ping_2.response_ms, url: site_2.url}]),
       ]
       expect(described_class.generate).to eq expected
     end

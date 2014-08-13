@@ -10,7 +10,7 @@ resource "Probes" do
     let!(:ping)  { run.pings.create attributes_for :ping, site_id: site.id  }
 
     let!(:ping_1)    { {response_ms: ping.response_ms, url: site.url} }
-    let!(:probe_1) { {name: probe.name, location: probe.location, ip: probe.ip, pings: [ping_1] } }
+    let!(:probe_1) { {uid: probe.uid, location: probe.location, ip: probe.ip, pings: [ping_1] } }
     let!(:expected)  { [probe_1] }
 
     example_request "Get the latest pings for each probe" do
@@ -19,7 +19,7 @@ resource "Probes" do
     end
   end
 
-  put "/probes/ProbeName" do
+  put "/probes/ProbeUID" do
 
     parameter :location, "The location of the probe",   required: true, scope: :probe
     parameter :ip,       "The IP address of the probe", required: true, scope: :probe
@@ -32,13 +32,13 @@ resource "Probes" do
     example_request "Create or update a probe" do
       expect(status).to eq 201
 
-      expect(Probe.first.name).to eq "ProbeName"
+      expect(Probe.first.uid).to eq "ProbeUID"
       expect(Probe.first.ip).to eq ip
       expect(Probe.first.location).to eq location
     end
   end
 
-  post "/probes/ProbeName/runs" do
+  post "/probes/ProbeUID/runs" do
     let(:ping_times) {[40, 200]}
 
     parameter :pings, "The sites that have been pinged and the response time", required: true
@@ -54,7 +54,7 @@ resource "Probes" do
     let!(:site_2) { create :site, url: "site 2" }
 
     before do
-      create :probe, name: "ProbeName"
+      create :probe, uid: "ProbeUID"
     end
 
     let(:raw_post) { params.to_json }

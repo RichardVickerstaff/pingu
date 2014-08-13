@@ -7,8 +7,8 @@ module V1
     end
 
     def update
-      probe = Probe.find_or_initialize_by(name: params[:id])
-      probe.update(name: params[:id], location: params[:probe][:location], ip: params[:probe][:ip])
+      probe = Probe.find_or_initialize_by(uid: params[:id])
+      probe.update(uid: params[:id], location: params[:probe][:location], ip: params[:probe][:ip])
 
       render status: 201, json: ""
     end

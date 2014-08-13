@@ -16,13 +16,13 @@ describe V1::ProbesController, type: :controller do
   describe 'PUT update' do
     let(:ip) { Faker::Internet.ip_v4_address }
     let(:location) { Faker::Address.city }
-    let(:name) { "A name" }
+    let(:uid) { "A uid" }
 
     context "The probe does not exist" do
       it "Creates a new probe" do
-        put :update, id: name, probe: { location: location, ip: ip}
+        put :update, id: uid, probe: { location: location, ip: ip}
 
-        expect(Probe.first.name).to eq name
+        expect(Probe.first.uid).to eq uid
         expect(Probe.first.ip).to eq ip
         expect(Probe.first.location).to eq location
 
@@ -33,11 +33,11 @@ describe V1::ProbesController, type: :controller do
     context "The probe does exist" do
 
       before do
-        create :probe, name: name, ip: "This must change"
+        create :probe, uid: uid, ip: "This must change"
       end
 
       it "Updates the probe" do
-        put :update, id: name, probe: {location: location, ip: ip}
+        put :update, id: uid, probe: {location: location, ip: ip}
 
         expect(Probe.all.count).to eq 1
         expect(Probe.first.ip).to eq ip

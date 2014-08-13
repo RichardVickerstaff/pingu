@@ -1,3 +1,3 @@
 collection @probe_report
 
-attributes :name, :location, :ip, :pings
+attributes :uid, :location, :ip, :pings

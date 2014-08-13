@@ -1,8 +1,8 @@
 require "rails_helper"
 
 describe Probe do
-  it { is_expected.to validate_presence_of :name }
-  it { is_expected.to validate_uniqueness_of(:name).case_insensitive }
+  it { is_expected.to validate_presence_of :uid }
+  it { is_expected.to validate_uniqueness_of(:uid).case_insensitive }
   it { is_expected.to validate_presence_of :ip }
   it { is_expected.to validate_presence_of :location }
   it { is_expected.to have_many :runs }
