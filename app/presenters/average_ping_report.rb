@@ -1,7 +1,7 @@
 class AveragePingReport
   AveragePing = Struct.new(:group_name, :average_response_ms)
 
-  def self.generate
+  def generate
     recent_pings = Probe.alive.to_a.map(&:latest_pings)
     average_pings = recent_pings.flatten.group_by(&:site_group)
       .map do |group, pings|

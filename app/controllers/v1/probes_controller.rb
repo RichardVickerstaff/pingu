@@ -3,7 +3,7 @@ module V1
     respond_to :json
 
     def index
-      @probe_report = ProbeReport.generate
+      @probe_report = ProbeReport.new.generate
     end
 
     def update

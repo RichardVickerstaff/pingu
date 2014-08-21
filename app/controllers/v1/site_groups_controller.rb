@@ -3,7 +3,7 @@ module V1
     respond_to :json
 
     def report
-      @report = AveragePingReport.generate
+      @report = AveragePingReport.new.generate
     end
   end
 end

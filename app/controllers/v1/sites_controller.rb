@@ -3,7 +3,7 @@ module V1
     respond_to :json
 
     def sample
-      @sample_sites = SiteGroupSample.generate
+      @sample_sites = SiteGroupSample.new.generate
     end
 
   end
