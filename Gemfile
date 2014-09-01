@@ -11,6 +11,7 @@ gem 'values'
 gem 'rabl'
 
 group :test, :development do
+  gem 'database_cleaner'
   gem 'factory_girl_rails'
   gem 'faker'
   gem 'metric_fu'
@@ -29,7 +30,6 @@ end
 group :test do
   gem 'capybara'
   gem 'cucumber-rails', require: false
-  gem 'database_cleaner'
   gem 'shoulda-matchers'
   gem 'simplecov'
 end
