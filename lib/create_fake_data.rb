@@ -11,7 +11,7 @@ include FactoryGirl::Syntax::Methods
 probe = create :probe
 run = probe.runs.create attributes_for :run
 site = create :site
-run.pings.create attributes_for :ping, site_id: site.id 
+run.pings.create attributes_for :ping, site_id: site.id
 
 #Site spec
 create :site_group, :with_one_site

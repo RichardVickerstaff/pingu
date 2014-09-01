@@ -9,6 +9,7 @@ gem 'jbuilder'
 gem 'rake_rack'
 gem 'values'
 gem 'rabl'
+gem 'rack-cors'
 
 group :test, :development do
   gem 'database_cleaner'
