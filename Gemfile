@@ -6,7 +6,7 @@ gem 'pg'
 gem "apitome", git: 'https://github.com/modeset/apitome'
 gem 'foreigner'
 gem 'jbuilder'
-gem 'rake_rack'
+gem 'rake-n-bake'
 gem 'values'
 gem 'rabl'
 
