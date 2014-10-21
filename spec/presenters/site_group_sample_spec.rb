@@ -10,7 +10,7 @@ describe SiteGroupSample do
 
     it "returns a sample of URLs to ping" do
       expected = [ uk_site_1.url, uk_site_2.url, us_site.url ]
-      expect(described_class.generate).to match_array expected
+      expect(subject.generate).to match_array expected
     end
 
   end

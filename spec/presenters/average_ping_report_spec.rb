@@ -25,7 +25,7 @@ describe AveragePingReport do
         AveragePingReport::AveragePing.new("UK", ping_1.response_ms),
         AveragePingReport::AveragePing.new("USA", ping_2.response_ms)
       ]
-      expect(described_class.generate).to eq expected
+      expect(subject.generate).to eq expected
     end
 
   end

@@ -7,7 +7,7 @@ describe V1::SiteGroupsController, type: :controller do
   describe "GET report" do
     let(:report) { double :report }
 
-    before { allow(AveragePingReport).to receive(:generate).and_return report }
+    before { allow(AveragePingReport).to receive_message_chain("new.generate").and_return report }
 
     it "assigns @report" do
       get :report
